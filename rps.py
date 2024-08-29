@@ -5,8 +5,8 @@ from collections import defaultdict
 
 class Player:
   """define player class"""
-  def __init__(self, name):
-    self.name = name
+  def __init__(self, name_parameter):
+    self.name = name_parameter
 
 def clear_screen():
     """clears the console screen"""
@@ -17,7 +17,7 @@ def get_user_choice(options):
     valid_choice = False
     
     while not valid_choice:
-        input("\nJust let me know when you're ready. (press any key)\n")
+        input("\nJust let me know when you're ready. (press enter)\n")
 
         for i in range(3):
             print(f"{options[i]}...")
@@ -87,8 +87,8 @@ def start_round():
     user_choice = get_user_choice(options)
     computer_choice = get_computer_choice(options)
 
-    print(f"\nYou chose: {user_choice}")
-    print(f"I chose: {computer_choice}!!\n")
+    print(f"\n{players[0]} chose: {user_choice}")
+    print(f"{players[1]} chose: {computer_choice}!!\n")
 
     # Determine winner and respond appropriately
     options_graph = create_graph()
@@ -113,6 +113,6 @@ while True:
 
     # if done playing, say goodbye and close game
     if not play_again.lower().startswith("y"):
-        input("\nWell, that was fun! See you around. (press any key)")
+        input("\nWell, that was fun! See you around. (press enter)")
         clear_screen()
         break
