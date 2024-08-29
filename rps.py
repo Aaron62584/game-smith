@@ -77,7 +77,7 @@ def find_winner(option_graph, p0_choice, p1_choice):
     else:
         return None
 
-def start_round():
+def play_round():
     """primary game flow"""
     # initialize the list of options in this game
     options = ["rock", "paper", "scissors"]
@@ -106,7 +106,7 @@ while True:
     print("I'm down. It's a very simple game, so I'll assume you know what")
     print("you're doing here.")
 
-    start_round()
+    play_round()
 
     # ask to play again
     play_again = input("\nPlay again? (y/n): ")
