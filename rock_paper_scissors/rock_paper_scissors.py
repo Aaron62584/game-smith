@@ -1,16 +1,15 @@
-from os import system as os_sys, name as os_name
 import random
 import time
 from collections import defaultdict
+from gsclasses import Player
+from gsutilities import clear_screen
 
-class Player:
-  """define player class"""
-  def __init__(self, name_parameter):
-    self.name = name_parameter
-
-def clear_screen():
-    """clears the console screen"""
-    os_sys('cls' if os_name == 'nt' else 'clear')
+def get_computer_choice(options):
+    """get computer choice"""
+    # TODO:implement more complex logic for computer selection:
+    # e.g. difficulty levels, cheating, prediction methods, user-specific
+    # strategies, opponent playstyle recognition, etc.
+    return random.choice(options)
 
 def get_user_choice(options):
     """give countdown and receive user's selection"""
@@ -45,13 +44,6 @@ def choice_is_valid(user_choice, options):
         print("paper, or scissors? Duh! It's in the name of the game!.")
 
         return False
-    
-def get_computer_choice(options):
-    """get computer choice"""
-    # TODO:implement more complex logic for computer selection:
-    # e.g. difficulty levels, cheating, prediction methods, user-specific
-    # strategies, opponent playstyle recognition, etc.
-    return random.choice(options)
 
 def create_graph():
     """create directed graph"""
