@@ -1,8 +1,17 @@
+# rock_paper_scissors.py
+
 import random
 import time
 from collections import defaultdict
-from gsclasses import Player
+from gsclasses import Player as BasicPlayer
 from gsutilities import clear_screen
+
+class Player(BasicPlayer):
+    def __init__(self,
+               name: str,
+               entity_type: str,
+               difficulty_level: int | None = None):
+        super().__init__(name, entity_type, difficulty_level)
 
 def get_computer_choice(options):
     """get computer choice"""
@@ -72,8 +81,14 @@ def find_winner(option_graph, p0_choice, p1_choice):
 def play_round():
     """primary game flow"""
     # initialize the list of options in this game
-    options = ["rock", "paper", "scissors"]
-    players = [Player("You"), Player("I")]
+    options = [
+        "rock",
+        "paper",
+        "scissors"]
+    players = [
+        Player("You", "human"),
+        Player("I", "computer", 0)
+]
 
     # get users selection and store validated choice if possible
     user_choice = get_user_choice(options)
@@ -108,3 +123,5 @@ while True:
         input("\nWell, that was fun! See you around. (press enter)")
         clear_screen()
         break
+
+    
