@@ -94,8 +94,8 @@ def play_round():
     user_choice = get_user_choice(options)
     computer_choice = get_computer_choice(options)
 
-    print(f"\n{players[0]} chose: {user_choice}")
-    print(f"{players[1]} chose: {computer_choice}!!\n")
+    print(f"\n{players[0].name} chose: {user_choice}")
+    print(f"{players[1].name} chose: {computer_choice}!!\n")
 
     # Determine winner and respond appropriately
     options_graph = create_graph()
