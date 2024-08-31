@@ -141,25 +141,26 @@ def play_round():
 
 options_graph = create_options_graph()
 
-"""main loop"""
-while True:
-    clear_screen()
-
-    # welcome user and introduce game
-    print("Hey, nice to see you!")
-    print("\nLooks like you want to play a game of Rock, Paper, Scissors, eh?")
-    print("I'm down. It's a very simple game, so I'll assume you know what")
-    print("you're doing here.")
-
-    play_round()
-
-    # ask to play again
-    play_again = input("\nPlay again? (y/n): ")
-
-    # if done playing, say goodbye and close game
-    if not play_again.lower().startswith("y"):
-        input("\nWell, that was fun! See you around. (press enter)")
+def main():
+    while True:
         clear_screen()
-        break
 
-    
+        # welcome user and introduce game
+        print("Hey, nice to see you!")
+        print("\nLooks like you want to play a game of Rock, Paper, Scissors, eh?")
+        print("I'm down. It's a very simple game, so I'll assume you know what")
+        print("you're doing here.")
+
+        play_round()
+
+        # ask to play again
+        play_again = input("\nPlay again? (y/n): ")
+
+        # if done playing, say goodbye and close game
+        if not play_again.lower().startswith("y"):
+            input("\nWell, that was fun! See you around. (press enter)")
+            clear_screen()
+            break
+
+if __name__ == "__main__":
+    main()

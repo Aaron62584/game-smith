@@ -125,27 +125,29 @@ def play_round():
 
 number_selection_range = determine_number_selection_range()
 
-"""main loop"""
-while True:
-    clear_screen()
-
-    # welcome user and introduce game
-    print("Hey, nice to see you!")
-    print("\nYou want to try and guess what number I'll pick, eh?")
-    print("I'm down. It's a very simple game, so I'll assume you know what")
-    print("you're doing here.")
-
-    input(f"\nLet me know when you're ready to go. (press enter)")  
-
-    play_round()
-
-    # ask to play again
-    play_again = input("\nPlay again? (y/n): ")
-
-    # if done playing, say goodbye and close game
-    if not play_again.lower().startswith("y"):
-        input("\nWell, that was fun! See you around. (press enter)")
+def main():
+    """main loop"""
+    while True:
         clear_screen()
-        break
 
-    
+        # welcome user and introduce game
+        print("Hey, nice to see you!")
+        print("\nYou want to try and guess what number I'll pick, eh?")
+        print("I'm down. It's a very simple game, so I'll assume you know what")
+        print("you're doing here.")
+
+        input(f"\nLet me know when you're ready to go. (press enter)")  
+
+        play_round()
+
+        # ask to play again
+        play_again = input("\nPlay again? (y/n): ")
+
+        # if done playing, say goodbye and close game
+        if not play_again.lower().startswith("y"):
+            input("\nWell, that was fun! See you around. (press enter)")
+            clear_screen()
+            break
+
+if __name__ == "__main__":
+    main()
