@@ -131,6 +131,7 @@ def resolve_round(players):
     windex = determine_round_winner(options_graph,players)
     print("Tie!" if windex is None else f"{players[windex].name} won!!")
 
+# TODO: Make a custom class for the rounds
 def play_round():
     """Runs a round of the game."""
     players = setup_players()
