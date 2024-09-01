@@ -1,33 +1,31 @@
-from gsutilities import*
+from gsutilities import *
+from gsclasses import *
+from games import *
 
-def main():
+def welcome_user():
     clear_screen()
     print("Welcome to the Game Hub!")
+   
+def main():
+    welcome_user()
+
     while True:
         try:
-            print("\nChoose a game to play:")
-            print("1. Number Guessing Game")
-            print("2. Rock, Paper, Scissors")
-            choice = input("Enter the number of the game you want to play: ").strip()
-            if choice == "1":
-                import pick_a_number
-                pick_a_number.main()
-            elif choice == "2":
-                import rock_paper_scissors
-                rock_paper_scissors.main()
-            else:
-                raise ValueError(f"Invalid game selection.")
-
-            print(f"\nWell, I hope you had fun.\n")
+            game_choice = choose_game()
         except ValueError as e:
             print(f"\n{e}")        
 
+        clear_screen()
+        game_choice.play_game()
+        clear_screen()
 
-        play_again = input("\nWant to try another game? (y/n): ")
-        if not play_again.lower().startswith("y"):
+        print(f"\nWell, I hope that was a fun game.\n")
+
+        if say_goodbye():        
             break
-
-    print("\nThanks for playing! See you next time.")
+        
+        clear_screen()
 
 if __name__ == "__main__":
     main()
+    clear_screen()

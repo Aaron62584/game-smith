@@ -1,11 +1,20 @@
 # pick_a_number.py
 
 import random
-from gsclasses import Player as BasicPlayer
-from gsutilities import clear_screen
+from gsclasses import *
+from gsutilities import *
 from typing import Optional
 
-class Player(BasicPlayer):
+def determine_number_selection_range():
+    """Create dictionary with the min and max of the number
+    selection range"""
+    # TODO: Implement validation logic.
+    # TODO: Make user configurable with persistent storage at the user level.
+    return {"min": 1, "max": 10}
+
+number_selection_range = determine_number_selection_range()
+
+class Player(BasePlayer):
     """custom subclass for any game-specific functionality
     needed for the Player class."""
     def __init__(self,
@@ -70,17 +79,6 @@ class Player(BasicPlayer):
                 raise ValueError("Number too low.")
         else:
             raise ValueError("Value was not an integer.")
-        
-        
-# TODO: Make selection range custom class to handle user configuration,
-# retrieval, and storage.
-def determine_number_selection_range():
-    """Create dictionary with the min and max of the number
-    selection range"""
-    # TODO: Implement validation logic.
-    # TODO: Make user configurable with persistent storage at the user level.
-    return {"min": 1, "max": 10}
-
 
 def determine_round_results(players):
     """Determine if player correctly guessed number."""
@@ -115,7 +113,6 @@ def resolve_round(players):
     else:
         print(f"{players['picker'].name} won!!")
 
-# TODO: Make a custom class for the rounds
 def play_round():
     """Runs a round of the game."""
     players = setup_players()
@@ -123,31 +120,11 @@ def play_round():
     display_selections(players)
     resolve_round(players)
 
-number_selection_range = determine_number_selection_range()
-
-def main():
+def play_game():
     """main loop"""
     while True:
-        clear_screen()
-
-        # welcome user and introduce game
-        print("Hey, nice to see you!")
-        print("\nYou want to try and guess what number I'll pick, eh?")
-        print("I'm down. It's a very simple game, so I'll assume you know what")
-        print("you're doing here.")
-
-        input(f"\nLet me know when you're ready to go. (press enter)")  
-
+        welcome_users_game("Pick a Number")
         play_round()
 
-        # ask to play again
-        play_again = input("\nPlay again? (y/n): ")
-
-        # if done playing, say goodbye and close game
-        if not play_again.lower().startswith("y"):
-            input("\nWell, that was fun! See you around. (press enter)")
-            clear_screen()
+        if say_goodbye():
             break
-
-if __name__ == "__main__":
-    main()

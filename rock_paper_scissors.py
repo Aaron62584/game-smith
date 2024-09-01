@@ -3,11 +3,11 @@
 import random
 import time
 from collections import defaultdict
-from gsclasses import Player as BasicPlayer
-from gsutilities import clear_screen
+from gsclasses import *
+from gsutilities import *
 from typing import Optional
 
-class Player(BasicPlayer):
+class Player(BasePlayer):
     """custom subclass for any game-specific functionality
     needed for the Player class."""
     def __init__(self,
@@ -141,26 +141,10 @@ def play_round():
 
 options_graph = create_options_graph()
 
-def main():
+def play_game():
     while True:
-        clear_screen()
-
-        # welcome user and introduce game
-        print("Hey, nice to see you!")
-        print("\nLooks like you want to play a game of Rock, Paper, Scissors, eh?")
-        print("I'm down. It's a very simple game, so I'll assume you know what")
-        print("you're doing here.")
-
+        welcome_users_game("Rock, Paper, Scissors")
         play_round()
 
-        # ask to play again
-        play_again = input("\nPlay again? (y/n): ")
-
-        # if done playing, say goodbye and close game
-        if not play_again.lower().startswith("y"):
-            input("\nWell, that was fun! See you around. (press enter)")
-            clear_screen()
+        if say_goodbye():
             break
-
-if __name__ == "__main__":
-    main()
