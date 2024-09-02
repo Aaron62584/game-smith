@@ -1,10 +1,18 @@
 # tic_tac_toe.py
 
-from gsclasses import *
-from gsutilities import *
+import gsclasses as gsc
+import gsutilities as gsu
 from typing import Optional, List
 
-class Player(BasePlayer):
+class TicTacToe(gsc.BaseGame):
+    def __init__(self, players:List[gsc.BasePlayer]) -> None:
+        super().__init__(players)
+
+    def play_game(self):
+        import tic_tac_toe
+        tic_tac_toe.play_game()
+
+class Player(gsc.BasePlayer):
     """custom subclass for any game-specific functionality
     needed for the Player class."""
     def __init__(self,
@@ -21,5 +29,5 @@ def setup_players():
     raise NotImplementedError
 
 def play_game():
-    welcome_users_game("Tic-Tac-Toe")
+    gsu.welcome_users_game("Tic-Tac-Toe")
     raise NotImplementedError

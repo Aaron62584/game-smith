@@ -1,6 +1,6 @@
 from os import system as os_sys, name as os_name
 from gsclasses import *
-from games import *
+import games
 
 def clear_screen():
     """clears the console screen"""
@@ -33,16 +33,19 @@ def choose_game():
     print("3. Tic-Tac-Toe")
     choice = input("Enter the number of the game you want to play: ").strip()
     if choice == "1":
+        from pick_a_number import PickANumber
         clear_screen()
-        return Pick_A_Number({"guesser": BasePlayer("You", "human"),
-                              "picker": BasePlayer("I", "computer", 0)})
+        return PickANumber({"guesser": BasePlayer("You", "human"),
+                            "picker": BasePlayer("I", "computer", 0)})
     elif choice == "2":
+        from rock_paper_scissors import RockPaperScissors
         clear_screen()
-        return Rock_Paper_Scissors([BasePlayer("You", "human"),
-                                    BasePlayer("I", "computer", 0)])
+        return RockPaperScissors({"User": BasePlayer("You", "human"),
+                                  "Opponent": BasePlayer("I", "computer", 0)})
     elif choice == "3":
+        from tic_tac_toe import TicTacToe
         clear_screen()
-        return Tic_Tac_Toe({"User": BasePlayer("You", "human"),
-                            "Opponent": BasePlayer("I", "computer", 0)})
+        return TicTacToe({"User": BasePlayer("You", "human"),
+                          "Opponent": BasePlayer("I", "computer", 0)})
     else:
         raise ValueError(f"Invalid game selection.")
